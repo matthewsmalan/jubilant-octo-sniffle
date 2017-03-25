@@ -1,0 +1,74 @@
+/* Document */
+
+body {
+  background: #F5F5F5;
+}
+
+/* End of Document */
+
+/* Navigation */
+.navbar-brand img {
+    width:30%;
+    height:100%;
+}
+
+.navbar-default {
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+.navbar {
+  background: #23272D !important;
+}
+
+#logo {
+  width: 83.33px;
+  height: 27.68px;
+}
+
+#login_button {
+  position: relative !important;
+  top: 7px !important;
+  outline: none;
+}
+
+/* End of Navigation */
+
+/* Books */
+
+#books_div {
+  position: absolute;
+    left: 50%;
+    top: 25%;
+    transform: translatex(-50%);
+}
+
+#books_text {
+  position: absolute;
+    left: 50%;
+    top: 15%;
+    transform: translatex(-50%);
+}
+
+.description_one, .description_two, .description_three {
+  color: #9B0103;
+  max-width: 100%;
+  text-align: center;
+  border: 1px solid #9B0103;
+  border-top: none;
+  font-weight: bold;
+}
+
+.description_one a {
+  text-decoration: none !important;
+}
+
+#book_cover_one, #book_cover_two, #book_cover_three {
+  min-height: 100%;
+}
+
+#book_column a {
+  text-decoration: none !important;
+}
+
+/* End of Books */
