@@ -32,7 +32,7 @@
         </div>
         
         <div class="pull-right">
-              <a href='signup.php'> <button type="button" class="btn btn-danger" id="login_button">Sign Up</button> </a>
+              <a href='login.php'> <button type="button" class="btn btn-danger" id="login_button">Login</button> </a>
         </div>
 
     </div>
@@ -45,24 +45,24 @@
     	<div class="col-md-4 col-md-offset-4" id='login_form'>
     		<div class="panel panel-default">
 			  	<div class="panel-heading">
-			    	<h3 class="panel-title">Please sign in</h3>
+			    	<h3 class="panel-title">Join for Free</h3>
 			 	</div>
-			  	<div class="panel-body">
-			  	  <span id='login_failed'></span>
+			  	<div class="panel-body" id='signup_container'>
 			    	<form>
                     <fieldset>
 			    	  <div class="form-group">
-			    		    <input class="form-control" placeholder="Username or Email" name="email" type="text" id='username_login' autocomplete="off">
+			    		    <input class="form-control" placeholder="Username" name="username" type="text" key='username_signup' autocomplete="off">
 			    		</div>
+			    		
 			    		<div class="form-group">
-			    			<input class="form-control" placeholder="Password" name="password" type="password" value="" id='password_login' autocomplete="off">
+			    		    <input class="form-control" placeholder="Email" name="email" type="text" key='email_signup' autocomplete="off">
 			    		</div>
-			    		<div class="checkbox">
-			    	    	<label>
-			    	    		<input name="remember" type="checkbox" value="Remember Me" id='remember_me'> Remember Me
-			    	    	</label>
-			    	    </div>
-			    		<input class="btn btn-lg btn-primary btn-block" type="button" value="Login" id='check_login'>
+			    		
+			    		<div class="form-group">
+			    			<input class="form-control" placeholder="Password" name="password" type="password" value="" key='password_signup' autocomplete="off">
+			    		</div>
+
+			    		<input class="btn btn-lg btn-primary btn-block" type="button" value="Sign Up Now" id='check_signup'>
 			    	</fieldset>
 			      	</form>
 			    </div>

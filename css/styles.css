@@ -45,30 +45,134 @@ body {
 
 #books_text {
   position: absolute;
-    left: 50%;
+    left: 48%;
     top: 15%;
     transform: translatex(-50%);
+    min-width: 200px;
 }
 
-.description_one, .description_two, .description_three {
-  color: #9B0103;
+.description_one, .description_two, .description_three , .description_four {
   max-width: 100%;
   text-align: center;
-  border: 1px solid #9B0103;
-  border-top: none;
   font-weight: bold;
+  border: 1px solid #B00103;
+  border-top: none;
+  color: #B00103;
 }
 
 .description_one a {
   text-decoration: none !important;
 }
 
-#book_cover_one, #book_cover_two, #book_cover_three {
-  min-height: 100%;
-}
-
 #book_column a {
   text-decoration: none !important;
 }
 
+#book_cover_one, #book_cover_two, #book_cover_three, #book_cover_four {
+min-height: 300px;
+}
+
+@media(max-width:767px){
+  #book_cover_one {
+  margin-top: 50px !important;
+  }
+}
+
+.description_one, .description_two, .description_three, .description_four {
+  margin-bottom: 20px !important;
+}
 /* End of Books */
+
+/* Login Form */
+
+#login_form {
+  position: absolute;
+  top: 15%;
+  transform: translatex(-50%);
+}
+
+#login_failed {
+  color: #9B0103 !important;
+  font-weight: bold !important;
+}
+
+/* End of Login Form */
+
+/* New NAV */
+
+#avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+#avatar_div {
+  padding: 5px;
+}
+
+#avatar_caret, #real_name {
+  color: white;
+  position: relative;
+  left: 5px;
+  font-size: 16px;
+}
+
+#real_name {
+  font-weight: bold;
+}
+
+#avatar_caret, #real_name {
+  position: relative;
+  top: 5px;
+}
+
+#avatar_caret {
+  top: 7px;
+}
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+#log_out {
+  color: #B00103;
+}
+
+/* End of New NAV */

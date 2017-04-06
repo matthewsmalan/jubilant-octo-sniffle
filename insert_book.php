@@ -14,8 +14,10 @@ $new_token = $random_fetch->token_id;
 $find_book = $db->query("SELECT * FROM books WHERE token_id='$new_token'");
 $fetch_find = $find_book->fetch_object();
 $find_image = $fetch_find->image;
+$random_minute = rand(1,59);
+$random_hour = rand(3,6);
 
-$new_time = date("m/d/Y H:i", strtotime('+5 hours'));
+$new_time = date("m/d/Y H:i", strtotime('+'.$random_hour.' hours +'.$random_minute.' minutes'));
 $update_book = $db->query("UPDATE books SET token=$token, end_date='$new_time' WHERE token_id='$new_token'");
 
 // REPLACE NEW BOOK
