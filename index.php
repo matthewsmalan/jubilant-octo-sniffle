@@ -23,7 +23,7 @@
       $token_id1 = $fetch_books->token_id;
         
         echo "<div class='col-lg-3 col-sm-6 portfolio-item' id='book_column'>
-                <a href='books.php?id=$token_id1'>
+                <a href='books.php?id=$token_id1' id='link_1'>
                     <img src='$book_image' class='img-responsive' alt='' id='book_cover_one' token_id='$token_id1'>
                 <div class='description_one'>
                   
@@ -44,7 +44,9 @@
          $(".description_one").text(result);
          machine = JSON.parse(result);
          var date = machine.time;
+         var token = machine.token;
       
+         $("#link_1").attr("href","books.php?id="+token);
          $("#book_cover_one").attr("src",machine.image);
 
         $(".description_one").countdown(date, function(event) {
@@ -75,7 +77,7 @@
       $token_id2 = $fetch_books2->token_id;
         
         echo "<div class='col-lg-3 col-sm-6 portfolio-item' id='book_column'>
-                <a href='books.php?id=$token_id2'>
+                <a href='books.php?id=$token_id2' id='link_2'>
                     <img src='$book_image2' class='img-responsive' alt='' id='book_cover_two' token_id='$token_id2'>
                 <div class='description_two'>
                   
@@ -94,6 +96,9 @@
          $(".description_two").text(result);
          machine = JSON.parse(result);
          var date = machine.time;
+         var token = machine.token;
+      
+         $("#link_2").attr("href","books.php?id="+token);
       
          $("#book_cover_two").attr("src",machine.image);
 
@@ -124,7 +129,7 @@
       $token_id3 = $fetch_books3->token_id;
         
         echo "<div class='col-lg-3 col-sm-6 portfolio-item' id='book_column'>
-                <a href='books.php?id=$token_id3'>
+                <a href='books.php?id=$token_id3' id='link_3'>
                     <img src='$book_image3' class='img-responsive' alt='' id='book_cover_three' token_id='$token_id3'>
                 <div class='description_three'>
                   
@@ -143,6 +148,9 @@
          $(".description_three").text(result);
          machine = JSON.parse(result);
          var date = machine.time;
+         var token = machine.token;
+      
+         $("#link_3").attr("href","books.php?id="+token);
       
          $("#book_cover_three").attr("src",machine.image);
 

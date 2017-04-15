@@ -26,7 +26,7 @@ $replace_book = $db->query("UPDATE books SET token=0 WHERE token_id='$token_id'"
 
 // JSON ARRAY
 
-$var = array("time" => $new_time, "image" => $find_image);
+$var = array("time" => $new_time, "image" => $find_image, "token" => $new_token);
 print_r(json_encode($var));
 
 

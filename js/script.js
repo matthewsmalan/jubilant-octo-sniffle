@@ -1,6 +1,45 @@
 
 $(document).ready(function() {
   
+  /* Read More */
+  
+   // Configure/customize these variables.
+    var showChar = 375;  // How many characters are shown by default
+    var ellipsestext = "";
+    var moretext = "Show more";
+    var lesstext = "Show less";
+    
+
+    $('#books_description').each(function() {
+        var content = $(this).html();
+ 
+        if(content.length > showChar) {
+ 
+            var c = content.substr(0, showChar);
+            var h = content.substr(showChar, content.length - showChar);
+ 
+            var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
+ 
+            $(this).html(html);
+        }
+ 
+    });
+ 
+    $(".morelink").click(function(){
+        if($(this).hasClass("less")) {
+            $(this).removeClass("less");
+            $(this).html(moretext);
+        } else {
+            $(this).addClass("less");
+            $(this).html(lesstext);
+        }
+        $(this).parent().prev().toggle();
+        $(this).prev().toggle();
+        return false;
+    });
+  
+  /* End of Read More */
+  
     /* Sign Up Page */
   
   $("#check_signup").click(function() {
@@ -13,11 +52,13 @@ $(document).ready(function() {
   url: "check_signup.php",
   data: {username: username_signup, email: email_signup, password: password_signup},
   success: function(data){
-    if(data.indexOf("Success")) {
-      window.open("index.php","_self");
-    } else {
-     $("#signup_container").html(data);
-    }
+      $("#signup_container").html(data);
+      
+      if($("#signup_container:contains('Success')").length)
+                        {
+                          window.open("index.php","_self");
+                        }
+      
   }
 });
     
