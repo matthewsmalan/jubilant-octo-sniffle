@@ -17,12 +17,13 @@ $description_check = $fetchInfo->description;
 <div class='row'>
   
 <!-- Image -->
-<div class="col-xs-4 col-md-3 col-lg-2" id='title'>
-  <img src='<?php echo $image_check; ?>' class='img-responsive'>
+<div class="col-xs-5 col-md-3 col-lg-2" id='title'>
+  <img src='<?php echo $image_check; ?>' class='img-responsive'> <br> <div id='win_text'> Ways to Win </div>
+  
 </div>
 
 <!-- Description -->
-<div class="col-xs-6 col-md-7 col-lg-5" id='description'>
+<div class="col-xs-7 col-md-7 col-lg-5" id='description'>
  <span id='title_text'> <?php echo $title_check; ?> </span> <br> <span id='author_text'> by <a href='#' id='author_link'><?php echo $author_check; ?></a> </span> <br> <br>
  
  <div id='books_description'><?php echo $description_check; ?></div>
@@ -31,143 +32,62 @@ $description_check = $fetchInfo->description;
 </div>
 
 <!-- End of Info -->
-
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"/>
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"/>
 <!-- Ways to Win -->
 
 <br>
  
  <div class='row' id='win_row'>
    
-  <div class="col-xs-5 col-sm-3 col-md-3 col-lg-2" id='title'>
-    
-    <!-- Title -->
-    <span id='win_text'> Ways to Win </span> <br>
-          
-    <a href='#' class='win_link'> <div class='win_box' style='background: url("https://i.ytimg.com/vi/8sME-VxUQQA/hqdefault.jpg?custom=true&w=196&h=110&stc=true&jpg444=true&jpgq=90&sp=68&sigh=EgyGW3D0KWyu5ei-2aUz8FPI_Jc");'> <i class="fa fa-play" aria-hidden="true" id='video'></i>
+   <?php
    
-   <div class='description'> Earn 5 Points </div>
+   $getVideos = $db->query("SELECT * FROM videos WHERE token='$id'");
    
-   </div> </a>
+   while($fetch_videos = mysqli_fetch_array($getVideos)) {
+        $number++;
+        $title_video = $fetch_videos["title"];
+        $photo_video = $fetch_videos["photo"];
+        $points_video = $fetch_videos["points"];
+        $src_video = $fetch_videos["src"];
+        
+       echo "
+       <div class='col-xs-5 col-sm-3 col-md-3 col-lg-2' id='title'>
+       <a href='#' class='win_link'>
+  <div class='win_box' data-toggle='modal' data-target='#myVideo' style='background: url(\"$photo_video\");background-repeat: no-repeat
+    background-position: center center; background-size: cover;' title='$title_video' data='$src_video' photo='$photo_video'>
+    <i class='fa fa-play' aria-hidden='true' id='video'></i>
+    <div class='description'> Earn 5 Points </div>
   </div>
-  
-  <div class="col-xs-5 col-sm-3 col-md-3 col-lg-2" id='title'>
-    <a href='#' class='win_link'> <div class='win_box' style='background: url("https://i.ytimg.com/vi/8sME-VxUQQA/hqdefault.jpg?custom=true&w=196&h=110&stc=true&jpg444=true&jpgq=90&sp=68&sigh=EgyGW3D0KWyu5ei-2aUz8FPI_Jc");'> <i class="fa fa-play" aria-hidden="true" id='video'></i>
+</a>
+  </div>";
+        
+   }
    
-   <div class='description'> Earn 5 Points </div>
-   
-   </div> </a>
-  </div>
-  
-  <div class="col-xs-5 col-sm-3 col-md-3 col-lg-2" id='title'>
-    <a href='#' class='win_link'> <div class='win_box' style='background: url("https://i.ytimg.com/vi/8sME-VxUQQA/hqdefault.jpg?custom=true&w=196&h=110&stc=true&jpg444=true&jpgq=90&sp=68&sigh=EgyGW3D0KWyu5ei-2aUz8FPI_Jc");'> <i class="fa fa-play" aria-hidden="true" id='video'></i>
-   
-   <div class='description'> Earn 5 Points </div>
-   
-   </div> </a>
-  </div>
-  
-  <div class="col-xs-5 col-sm-3 col-md-3 col-lg-2" id='title'>
-    <a href='#' class='win_link'> <div class='win_box' style='background: url("https://i.ytimg.com/vi/8sME-VxUQQA/hqdefault.jpg?custom=true&w=196&h=110&stc=true&jpg444=true&jpgq=90&sp=68&sigh=EgyGW3D0KWyu5ei-2aUz8FPI_Jc");'> <i class="fa fa-play" aria-hidden="true" id='video'></i>
-   
-   <div class='description'> Earn 5 Points </div>
-   
-   </div> </a>
-  </div>
-  
-  <!-- BREAK -->
-  
-  <div class="col-xs-5 col-sm-3 col-md-3 col-lg-2" id='title'>
-    <a href='#' class='win_link'> <div class='win_box' style='background: url("https://i.ytimg.com/vi/8sME-VxUQQA/hqdefault.jpg?custom=true&w=196&h=110&stc=true&jpg444=true&jpgq=90&sp=68&sigh=EgyGW3D0KWyu5ei-2aUz8FPI_Jc");'> <i class="fa fa-play" aria-hidden="true" id='video'></i>
-   
-   <div class='description'> Earn 5 Points </div>
-   
-   </div> </a>
-  </div>
-  
-  
-  <div class="col-xs-5 col-sm-3 col-md-3 col-lg-2" id='title'>
-    <a href='#' class='win_link'> <div class='win_box' style='background: url("https://i.ytimg.com/vi/8sME-VxUQQA/hqdefault.jpg?custom=true&w=196&h=110&stc=true&jpg444=true&jpgq=90&sp=68&sigh=EgyGW3D0KWyu5ei-2aUz8FPI_Jc");'> <i class="fa fa-play" aria-hidden="true" id='video'></i>
-   
-   <div class='description'> Earn 5 Points </div>
-   
-   </div> </a>
-  </div>
-  
-  
-  <div class="col-xs-5 col-sm-3 col-md-3 col-lg-2" id='title'>
-    <a href='#' class='win_link'> <div class='win_box' style='background: url("https://i.ytimg.com/vi/8sME-VxUQQA/hqdefault.jpg?custom=true&w=196&h=110&stc=true&jpg444=true&jpgq=90&sp=68&sigh=EgyGW3D0KWyu5ei-2aUz8FPI_Jc");'> <i class="fa fa-play" aria-hidden="true" id='video'></i>
-   
-   <div class='description'> Earn 5 Points </div>
-   
-   </div> </a>
-  </div>
-  
-  
-  <div class="col-xs-5 col-sm-3 col-md-3 col-lg-2" id='title'>
-    <a href='#' class='win_link'> <div class='win_box' style='background: url("https://i.ytimg.com/vi/8sME-VxUQQA/hqdefault.jpg?custom=true&w=196&h=110&stc=true&jpg444=true&jpgq=90&sp=68&sigh=EgyGW3D0KWyu5ei-2aUz8FPI_Jc");'> <i class="fa fa-play" aria-hidden="true" id='video'></i>
-   
-   <div class='description'> Earn 5 Points </div>
-   
-   </div> </a>
-  </div>
-  
-  
-  <div class="col-xs-5 col-sm-3 col-md-3 col-lg-2" id='title'>
-    <a href='#' class='win_link'> <div class='win_box' style='background: url("https://i.ytimg.com/vi/8sME-VxUQQA/hqdefault.jpg?custom=true&w=196&h=110&stc=true&jpg444=true&jpgq=90&sp=68&sigh=EgyGW3D0KWyu5ei-2aUz8FPI_Jc");'> <i class="fa fa-play" aria-hidden="true" id='video'></i>
-   
-   <div class='description'> Earn 5 Points </div>
-   
-   </div> </a>
-  </div>
-  
-  
-  <div class="col-xs-5 col-sm-3 col-md-3 col-lg-2" id='title'>
-    <a href='#' class='win_link'> <div class='win_box' style='background: url("https://i.ytimg.com/vi/8sME-VxUQQA/hqdefault.jpg?custom=true&w=196&h=110&stc=true&jpg444=true&jpgq=90&sp=68&sigh=EgyGW3D0KWyu5ei-2aUz8FPI_Jc");'> <i class="fa fa-play" aria-hidden="true" id='video'></i>
-   
-   <div class='description'> Earn 5 Points </div>
-   
-   </div> </a>
-  </div>
-  
-  
-  <div class="col-xs-5 col-sm-3 col-md-3 col-lg-2" id='title'>
-    <a href='#' class='win_link'> <div class='win_box' style='background: url("https://i.ytimg.com/vi/8sME-VxUQQA/hqdefault.jpg?custom=true&w=196&h=110&stc=true&jpg444=true&jpgq=90&sp=68&sigh=EgyGW3D0KWyu5ei-2aUz8FPI_Jc");'> <i class="fa fa-play" aria-hidden="true" id='video'></i>
-   
-   <div class='description'> Earn 5 Points </div>
-   
-   </div> </a>
-  </div>
-  
-  
-  <div class="col-xs-5 col-sm-3 col-md-3 col-lg-2" id='title'>
-    <a href='#' class='win_link'> <div class='win_box' style='background: url("https://i.ytimg.com/vi/8sME-VxUQQA/hqdefault.jpg?custom=true&w=196&h=110&stc=true&jpg444=true&jpgq=90&sp=68&sigh=EgyGW3D0KWyu5ei-2aUz8FPI_Jc");'> <i class="fa fa-play" aria-hidden="true" id='video'></i>
-   
-   <div class='description'> Earn 5 Points </div>
-   
-   </div> </a>
-  </div>
-  
-  
-  <div class="col-xs-5 col-sm-3 col-md-3 col-lg-2" id='title'>
-    <a href='#' class='win_link'> <div class='win_box' style='background: url("https://i.ytimg.com/vi/8sME-VxUQQA/hqdefault.jpg?custom=true&w=196&h=110&stc=true&jpg444=true&jpgq=90&sp=68&sigh=EgyGW3D0KWyu5ei-2aUz8FPI_Jc");'> <i class="fa fa-play" aria-hidden="true" id='video'></i>
-   
-   <div class='description'> Earn 5 Points </div>
-   
-   </div> </a>
-  </div>
-  
-  
-  <div class="col-xs-5 col-sm-3 col-md-3 col-lg-2" id='title'>
-    <a href='#' class='win_link'> <div class='win_box' style='background: url("https://i.ytimg.com/vi/8sME-VxUQQA/hqdefault.jpg?custom=true&w=196&h=110&stc=true&jpg444=true&jpgq=90&sp=68&sigh=EgyGW3D0KWyu5ei-2aUz8FPI_Jc");'> <i class="fa fa-play" aria-hidden="true" id='video'></i>
-   
-   <div class='description'> Earn 5 Points </div>
-   
-   </div> </a>
-  </div>
-  
+   ?>
   
 </div>
   
   <!-- Win Boxes -->
-  
-  <!-- End of Win Boxes -->
+
+<!-- Modal -->
+<div id="myVideo" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p id='modal-text'>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- End of Modal -->

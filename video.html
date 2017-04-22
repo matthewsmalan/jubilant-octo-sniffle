@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Video Player</title>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="videoplayer.css">
+    </head>
+    <body>
+        <div id="skin">
+            <video id="myMovie" width="640" height="360" autoplay>
+                <source src="videos/Fable Anniversary - Official Trailer.mp4">
+            </video>
+            <nav>
+                <div id="buttons">
+                   <i class="fa fa-pause" aria-hidden="true" id="playButton"></i>
+                </div>
+                
+                <span id='current'>0:00 / </span> <span id='duration'> 0:00</span>
+                <div id="defaultBar">
+                    <div id="progressBar"></div>
+                </div>
+                <div style="clear:both"></div>
+            </nav>
+        </div>
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="videoplayer.js"></script>
+    </body>
+</html>

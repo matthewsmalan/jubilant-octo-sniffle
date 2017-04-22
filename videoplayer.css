@@ -1,0 +1,62 @@
+body {
+    text-align: center;
+    display: block;
+}
+
+nav {
+    margin: 5px 0px;
+}
+
+#myMovie {
+    width: 850px;
+    height: 480px;
+}
+
+#myMovie::-webkit-media-controls {
+  display: none;
+}
+
+#playButton {
+  position: relative;
+  top: -47px;
+  left: -294px;
+  padding: 10px;
+  padding-bottom: 13px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+#skin {
+  position: relative;
+}
+
+#defaultBar {
+    position: relative;
+    float: left;
+    top: -90px;
+    left: 481px;
+    width: 622px;
+    height: 3px;
+    background-color: #C2C2C2;
+}
+#progressBar {
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background-color: #CA241E;
+}
+
+#current, #duration {
+   position: relative;
+  top: -77px;
+  left: -540px;
+  color: white;
+  font-family: Open Sans;
+  font-size: 13px;
+}
+
+#duration {
+  left: -540px;
+}

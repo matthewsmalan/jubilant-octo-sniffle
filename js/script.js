@@ -1,6 +1,24 @@
 
 $(document).ready(function() {
   
+  /* Video */
+
+  
+  /* End of Video */
+  
+  /* Ways to Win */
+  
+  $(".win_box").click(function() {
+    
+    var title = $(this).attr("title");
+    var data = $(this).attr("data");
+    var photo = $(this).attr("photo");
+    
+    $(".modal-dialog").html("<div class='modal-content'> <div class='modal-header'> <button type='button' class='close' data-dismiss='modal'>&times;</button> <h4 class='modal-title'>"+title+"</h4> </div> <div class='modal-body'> <p id='modal-text'> hi </p> </div> <div class='modal-footer'> <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button> </div> </div>");
+  });
+  
+  /* End of Ways to Win */
+  
   /* Read More */
   
    // Configure/customize these variables.
