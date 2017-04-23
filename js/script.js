@@ -1,23 +1,79 @@
 
 $(document).ready(function() {
   
-  /* Video */
-
-  
-  /* End of Video */
-  
-  /* Ways to Win */
+  /* Check for Model */
   
   $(".win_box").click(function() {
-    
     var title = $(this).attr("title");
     var data = $(this).attr("data");
-    var photo = $(this).attr("photo");
-    
-    $(".modal-dialog").html("<div class='modal-content'> <div class='modal-header'> <button type='button' class='close' data-dismiss='modal'>&times;</button> <h4 class='modal-title'>"+title+"</h4> </div> <div class='modal-body'> <p id='modal-text'> hi </p> </div> <div class='modal-footer'> <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button> </div> </div>");
+    $("#title_video").text(title);
+    $("#myMovie").attr("src",data);
   });
   
-  /* End of Ways to Win */
+  $("#myVideo").click(function() {
+    var check_video = $('#myVideo').hasClass('in');
+    if(check_video == false) {
+     playOrPause(true);
+   }
+  });
+  
+   $(".win_box").click(function() {
+     
+     var special = $(this).attr("special");
+     var points = $(this).attr("points");
+     
+    playOrPause(false);
+    
+      
+  $("#myMovie").on("ended",
+  function(event) {
+     $.ajax({
+  type: "POST",
+  url: "insert_points.php",
+  data: {special: special, points:points},
+  success: function(data){
+    alert(data);
+  }
+});
+  });
+  });
+
+  /* End of Check for Model */
+  
+  $("#myMovie").click(function() {
+    myMovie=document.getElementById('myMovie');
+    
+     if(!myMovie.paused && !myMovie.ended) {
+       playOrPause(false);
+     } else {
+       playOrPause(true);
+     }
+    
+  });
+  
+  /* Video */
+  
+  $("#myMovie").on(
+    "timeupdate play",
+    function(event) {
+      
+      update();
+      
+      function format(s) {
+    m = Math.floor(s / 60);
+    m = (m >= 10) ? m : "0" + m;
+    s = Math.floor(s % 60);
+    s = (s >= 10) ? s : "0" + s;
+    return m + ":" + s;
+  }
+
+   var time = format(Math.floor(this.currentTime) + 1);
+   var duration = format(Math.floor(this.duration) + 1);
+      
+      onTrackedVideoFrame(time,duration);
+    });
+  
+  /* End of Video */
   
   /* Read More */
   
@@ -116,3 +172,62 @@ $(document).ready(function() {
   /* End of Login Page */
   
 });
+
+/* Video Out */
+
+function onTrackedVideoFrame(currentTime, duration){
+    $("#current").text(currentTime + " / ");
+    $("#duration").text(duration);
+}
+
+$("#myMovie").on("ended",
+function(event) {
+  
+});
+
+function doFirst(){
+  barSize=832;
+  myMovie=document.getElementById('myMovie');
+  playButton=document.getElementById('buttons');
+  defaultBar=document.getElementById('defaultBar');
+  progressBar=document.getElementById('progressBar');
+  
+  playButton.addEventListener('click', playOrPause, false);
+  defaultBar.onclick=clickedBar('click', clickedBar, false);
+}
+
+function playOrPause(){
+  if(!myMovie.paused && !myMovie.ended){
+    myMovie.pause();
+    playButton.innerHTML='<i class="fa fa-play" aria-hidden="true" id="playButton"></i>';
+    window.clearInterval(updateBar);
+  }else{
+    myMovie.play();
+    playButton.innerHTML='<i class="fa fa-pause" aria-hidden="true" id="playButton"></i>';
+    updateBar=setInterval(update, 500);
+  }
+}
+
+function update(){
+  var size=parseInt (myMovie.currentTime*barSize/myMovie.duration);
+  if(!myMovie.ended){
+    progressBar.style.width=size+'px';
+  }else{
+    progressBar.style.width=size+'px';
+    playButton.innerHTML='<i class="fa fa-play" aria-hidden="true" id="playButton"></i>';
+    window.clearInterval(updateBar);
+  }
+}
+
+function clickedBar(e){
+  if(!myMovie.paused && !myMovie.ended){
+    var mouseX=e.pageX-bar.offsetLeft;
+    var newTime=mouseX*myMovie.duration/barSize;
+    myMovie.currentTime=newTime;
+    progressBar.style.width=mouseX+'px';
+  }
+}
+
+window.addEventListener('load', doFirst, false);
+
+/* End of Video Out */

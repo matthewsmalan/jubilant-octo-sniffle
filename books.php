@@ -50,12 +50,13 @@ $description_check = $fetchInfo->description;
         $photo_video = $fetch_videos["photo"];
         $points_video = $fetch_videos["points"];
         $src_video = $fetch_videos["src"];
+        $special_video = $fetch_videos["special"];
         
        echo "
        <div class='col-xs-5 col-sm-3 col-md-3 col-lg-2' id='title'>
        <a href='#' class='win_link'>
   <div class='win_box' data-toggle='modal' data-target='#myVideo' style='background: url(\"$photo_video\");background-repeat: no-repeat
-    background-position: center center; background-size: cover;' title='$title_video' data='$src_video' photo='$photo_video'>
+    background-position: center center; background-size: cover;' title='$title_video' data='$src_video' photo='$photo_video' special='$special_video' points='$points_video'>
     <i class='fa fa-play' aria-hidden='true' id='video'></i>
     <div class='description'> Earn 5 Points </div>
   </div>
@@ -72,16 +73,28 @@ $description_check = $fetchInfo->description;
 
 <!-- Modal -->
 <div id="myVideo" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+  <div class="modal-dialog" id='video_model'>
 
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <h4 class="modal-title" id='title_video'> HEYYY</h4>
       </div>
       <div class="modal-body">
-        <p id='modal-text'>Some text in the modal.</p>
+        <p id='modal-text'>
+          <?php
+          
+          session_start();
+          
+          if(!$_SESSION["username"]) {
+            echo "You need to <a href='login.php'>login</a> to watch this video. Or <a href='signup.php'>Sign Up...</a>";
+          } else {
+            echo "<div id='skin'> <video id='myMovie' width='640' height='360'> <source src='videos/Fable Anniversary - Official Trailer.mp4'> </video> <nav> <div id='buttons'> <i class='fa fa-pause' aria-hidden='true' id='playButton'></i> </div> <span id='current'>0:00 / </span> <span id='duration'> 0:00</span> <div id='defaultBar'> <div id='progressBar'></div> </div> <div style='clear:both'></div> </nav> </div>";
+          }
+          
+          ?>
+        </p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -90,4 +103,5 @@ $description_check = $fetchInfo->description;
 
   </div>
 </div>
+
 <!-- End of Modal -->
