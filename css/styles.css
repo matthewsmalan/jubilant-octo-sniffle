@@ -366,3 +366,28 @@ min-height: 300px;
 /* End of Ways to Win */
 
 /* ends of books.php */
+
+/* entries.php */
+
+/* Table */
+
+
+#entry_text {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+
+#table_entry {
+  position: relative;
+  top: 150px !important;
+}
+
+#image_table {
+  width: 46px;
+  height: 80px;
+}
+
+/* End of Table */
+
+/* end of entries.php */

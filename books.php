@@ -42,7 +42,10 @@ $description_check = $fetchInfo->description;
    
    <?php
    
-   $getVideos = $db->query("SELECT * FROM videos WHERE token='$id'");
+   // $getVideos = $db->query("SELECT * FROM videos WHERE token='$id'");
+   session_start();
+  $username = $_SESSION["username"];
+   $getVideos = $db->query("select count(*) from videos a join points b on (a.special = b.special) where b.user = '$username' and a.token = '$id'");
    
    while($fetch_videos = mysqli_fetch_array($getVideos)) {
         $number++;
@@ -58,7 +61,7 @@ $description_check = $fetchInfo->description;
   <div class='win_box' data-toggle='modal' data-target='#myVideo' style='background: url(\"$photo_video\");background-repeat: no-repeat
     background-position: center center; background-size: cover;' title='$title_video' data='$src_video' photo='$photo_video' special='$special_video' points='$points_video'>
     <i class='fa fa-play' aria-hidden='true' id='video'></i>
-    <div class='description'> Earn 5 Points </div>
+    <div class='description'> Earn $points_video Points </div>
   </div>
 </a>
   </div>";

@@ -32,7 +32,7 @@ $(document).ready(function() {
   url: "insert_points.php",
   data: {special: special, points:points},
   success: function(data){
-    alert(data);
+    location.reload();
   }
 });
   });

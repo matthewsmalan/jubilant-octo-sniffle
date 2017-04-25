@@ -11,6 +11,4 @@ $user = $_SESSION["username"];
 
 $db->query("INSERT INTO points VALUES('','$special','$user','$points')");
 
-echo "Added";
-
 ?>

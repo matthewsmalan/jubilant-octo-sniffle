@@ -46,7 +46,7 @@
         <div class='dropdown'>
   <div id='avatar_div'> <img src='$avatar' id='avatar'> <span id='real_name'> $real_name </span> <i class='fa fa-caret-down' aria-hidden='true' id='avatar_caret'></i> </div>
   <div class='dropdown-content'>
-    <a href='#'>My Entries</a>
+    <a href='entries.php'>My Entries</a>
     <a href='#'>My Settings</a>
     <a href='log_out.php' id='log_out'>Log Out</a>
   </div>
