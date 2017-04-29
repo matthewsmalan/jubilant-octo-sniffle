@@ -251,7 +251,7 @@ min-height: 300px;
   min-width: 150px;
 }
 
-.win_box {
+.win_box, .win_box2 {
   position: relative;
   top: 0px;
   height: 110px;
@@ -260,6 +260,10 @@ min-height: 300px;
   border-bottom: none !important;
   display: inline-block;
   margin-bottom: 50px !important;
+}
+
+.win_box2 {
+  cursor: default !important;
 }
 
 #video {
@@ -281,7 +285,7 @@ min-height: 300px;
   border: 1px solid #2A6496;
 }
 
-.description {
+.description, .description2 {
   position: relative;
   top: 63px;
   left: -1px;
@@ -289,6 +293,23 @@ min-height: 300px;
   border-top: none !important;
   border: 1px solid #C0C0C0;
   width: 196px !important;
+}
+
+.win_box2 {
+  border: 1px solid #23272D;
+  opacity: 0.8;
+   -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.description2 {
+  font-weight: bold;
+  border: 1px solid #23272D;
 }
 
 .win_link {
@@ -315,6 +336,20 @@ min-height: 300px;
     width: 850px;
     height: 480px;
 }
+
+@media(max-width:767px){
+  #myMovie {
+  width: 190px;
+  height: 107px;
+  }
+}
+
+@media(max-width:767px){
+  #defaultBar {
+   width: 170px !important;
+  }
+}
+
 
 #myMovie::-webkit-media-controls {
   display: none;
@@ -362,7 +397,6 @@ min-height: 300px;
   color: white !important;
   z-index: 5 !important;
 }
-
 /* End of Ways to Win */
 
 /* ends of books.php */

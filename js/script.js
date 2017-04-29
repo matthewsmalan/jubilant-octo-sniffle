@@ -1,23 +1,20 @@
 
+$(window).resize(function() {
+  doFirst();
+});
+
 $(document).ready(function() {
+  
+  
   
   /* Check for Model */
   
-  $(".win_box").click(function() {
-    var title = $(this).attr("title");
+   $(".win_box").click(function() {
+     
+     var title = $(this).attr("title");
     var data = $(this).attr("data");
     $("#title_video").text(title);
     $("#myMovie").attr("src",data);
-  });
-  
-  $("#myVideo").click(function() {
-    var check_video = $('#myVideo').hasClass('in');
-    if(check_video == false) {
-     playOrPause(true);
-   }
-  });
-  
-   $(".win_box").click(function() {
      
      var special = $(this).attr("special");
      var points = $(this).attr("points");
@@ -37,6 +34,14 @@ $(document).ready(function() {
 });
   });
   });
+  
+    $("#myVideo").click(function() {
+    var check_video = $('#myVideo').hasClass('in');
+    if(check_video == false) {
+     playOrPause(true);
+   }
+  });
+  
 
   /* End of Check for Model */
   
@@ -180,13 +185,15 @@ function onTrackedVideoFrame(currentTime, duration){
     $("#duration").text(duration);
 }
 
-$("#myMovie").on("ended",
-function(event) {
-  
-});
 
 function doFirst(){
-  barSize=832;
+  
+  if($(window).innerWidth() <= 767) {
+   barSize = 170;
+} else {
+  barSize = 832;
+}
+  
   myMovie=document.getElementById('myMovie');
   playButton=document.getElementById('buttons');
   defaultBar=document.getElementById('defaultBar');

@@ -18,7 +18,7 @@ $description_check = $fetchInfo->description;
   
 <!-- Image -->
 <div class="col-xs-5 col-md-3 col-lg-2" id='title'>
-  <img src='<?php echo $image_check; ?>' class='img-responsive'> <br> <div id='win_text'> Ways to Win </div>
+  <img src='<?php echo $image_check; ?>' class='img-responsive'> <br> <div id='win_text'> Ways to Win </div> <br> <button type="button" class="btn btn-info">5 Points Earned in Total</button>
   
 </div>
 
@@ -41,11 +41,10 @@ $description_check = $fetchInfo->description;
  <div class='row' id='win_row'>
    
    <?php
-   
-   // $getVideos = $db->query("SELECT * FROM videos WHERE token='$id'");
+  
    session_start();
   $username = $_SESSION["username"];
-   $getVideos = $db->query("select count(*) from videos a join points b on (a.special = b.special) where b.user = '$username' and a.token = '$id'");
+     $getVideos = $db->query("SELECT * FROM videos WHERE token='$id'");
    
    while($fetch_videos = mysqli_fetch_array($getVideos)) {
         $number++;
@@ -54,17 +53,32 @@ $description_check = $fetchInfo->description;
         $points_video = $fetch_videos["points"];
         $src_video = $fetch_videos["src"];
         $special_video = $fetch_videos["special"];
+        $token_id = $fetch_videos["token"];
         
+        $checkUser = $db->query("SELECT * FROM points WHERE user='$username' AND special='$special_video'");
+        $numUser = $checkUser->num_rows;
+        
+        if($numUser > 0) {
+           echo "
+       <div class='col-xs-5 col-sm-3 col-md-3 col-lg-2' id='title'>
+  <div class='win_box2' data-toggle='modal' data-target='#myVideo2' style='background: url(\"$photo_video\");background-repeat: no-repeat
+    background-position: center center; background-size: cover;' title='Video Completed' data='delete' photo='$photo_video' special='$special_video' points='$points_video' book='$token_id'>
+    <i class='fa fa-play' aria-hidden='true' id='video'></i>
+    <div class='description2'> $points_video Points Earned </div>
+  </div>
+  </div>";
+        } else {
        echo "
        <div class='col-xs-5 col-sm-3 col-md-3 col-lg-2' id='title'>
        <a href='#' class='win_link'>
   <div class='win_box' data-toggle='modal' data-target='#myVideo' style='background: url(\"$photo_video\");background-repeat: no-repeat
-    background-position: center center; background-size: cover;' title='$title_video' data='$src_video' photo='$photo_video' special='$special_video' points='$points_video'>
+    background-position: center center; background-size: cover;' title='$title_video' data='$src_video' photo='$photo_video' special='$special_video' points='$points_video' book='$token_id'>
     <i class='fa fa-play' aria-hidden='true' id='video'></i>
     <div class='description'> Earn $points_video Points </div>
   </div>
 </a>
   </div>";
+        }
         
    }
    
@@ -82,7 +96,7 @@ $description_check = $fetchInfo->description;
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title" id='title_video'> HEYYY</h4>
+        <h4 class="modal-title" id='title_video'>Loading...</h4>
       </div>
       <div class="modal-body">
         <p id='modal-text'>
@@ -93,7 +107,7 @@ $description_check = $fetchInfo->description;
           if(!$_SESSION["username"]) {
             echo "You need to <a href='login.php'>login</a> to watch this video. Or <a href='signup.php'>Sign Up...</a>";
           } else {
-            echo "<div id='skin'> <video id='myMovie' width='640' height='360'> <source src='videos/Fable Anniversary - Official Trailer.mp4'> </video> <nav> <div id='buttons'> <i class='fa fa-pause' aria-hidden='true' id='playButton'></i> </div> <span id='current'>0:00 / </span> <span id='duration'> 0:00</span> <div id='defaultBar'> <div id='progressBar'></div> </div> <div style='clear:both'></div> </nav> </div>";
+            echo "<div id='skin'> <video id='myMovie'> <source src='videos/Fable Anniversary - Official Trailer.mp4'> </video> <nav> <div id='buttons'> <i class='fa fa-pause' aria-hidden='true' id='playButton'></i> </div> <span id='current'>0:00 / </span> <span id='duration'> 0:00</span> <div id='defaultBar'> <div id='progressBar'></div> </div> <div style='clear:both'></div> </nav> </div>";
           }
           
           ?>
@@ -108,3 +122,29 @@ $description_check = $fetchInfo->description;
 </div>
 
 <!-- End of Modal -->
+
+
+<!-- Modal Video -->
+<div id="myVideo2" class="modal fade" role="dialog">
+  <div class="modal-dialog" id='video_model'>
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" id='title_video'>Video Completed</h4>
+      </div>
+      <div class="modal-body">
+        <p id='modal-text'>
+          <div id='points'> Hello </div>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- End of Modal Video -->
